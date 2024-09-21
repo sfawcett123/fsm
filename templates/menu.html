@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+     <div class="wrapper">
+        <div class="box top-left-frame"></div>
+        <div class="box title-frame">{{config["APPLICATION_NAME"]}}</div>
+        {% for i in menu  %}
+             <div class="box left"></div>
+             <div class="box text">{{i.name}}</div>
+        {% endfor %}
+        <div class="box bottom-left-frame"></div>
+        <div class="box footer-frame">{% include "loadavg.html" %}</div>
+     </div>
+{% endblock %}
