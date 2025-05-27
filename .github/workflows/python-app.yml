@@ -69,31 +69,11 @@ jobs:
       run: echo "::set-output name=version::$(python ./bin/version)"
       id: version
 
-    - name: Get Release
-      uses: f2calv/gha-check-release-exists@v2
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      # if: github.ref_type == 'tag'
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ReleaseName: "Release ${{ steps.version.outputs.version }}"
-
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: "${{ steps.version.outputs.version }}"
-        release_name: "Release ${{ steps.version.outputs.version }}"
-        draft: false
-        prerelease: false
-      if: steps.check-release-exists.outputs.ReleaseExists == 'false'
-
-    - name: upload release artifact
-      uses: actions/upload-release-asset@v1
-      env:
-          GITHUB_TOKEN: ${ secrets.GITHUB_TOKEN }}
-      with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/manager-${{ steps.create_release.outputs.upload_url }}.tar.gz
-          asset_name: manager-${{ steps.create_release.outputs.upload_url }}.tar.gz
-          asset_content_type: application/gzip
-      if: steps.check-release-exists.outputs.ReleaseExists == 'false'
+        make_latest: true
+        files: |
+          dist/manager-${{ steps.version.outputs.version }}.tar.gz
+          LICENSE
