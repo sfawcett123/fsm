@@ -1,2 +1,2 @@
 test:
-	python -m pytest -vv
+	python -m pytest --ctrf report.json
