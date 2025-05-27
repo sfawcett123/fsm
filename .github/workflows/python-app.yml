@@ -70,6 +70,7 @@ jobs:
       id: version
 
     - name: Get Release
+      id: check-release-exists
       uses: f2calv/gha-check-release-exists@v2
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -93,7 +94,7 @@ jobs:
           GITHUB_TOKEN: ${ secrets.GITHUB_TOKEN }}
       with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/manager-${{ steps.create_release.outputs.upload_url }}.tar.gz
-          asset_name: manager-${{ steps.create_release.outputs.upload_url }}.tar.gz
+          asset_path: dist/manager-${{ steps.version.outputs.version }}.tar.gz
+          asset_name: manager-${{ steps.version.outputs.version }}.tar.gz
           asset_content_type: application/gzip
       if: steps.check-release-exists.outputs.ReleaseExists == 'false'
