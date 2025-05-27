@@ -1,13 +1,17 @@
 [build-system]
-requires = ["setuptools >= 77.0.3"]
+requires = ["setuptools >= 77.0.3","setuptools-git-versioning"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "manager"
-version = "0.0.3"
+dynamic = ["version"]
+
 dependencies = [
     "Flask==3.0.3",
 ]
+
+[tool.setuptools-git-versioning]
+enabled = true
 
 [tool.setuptools.packages.find]
 where = ["manager"]  
