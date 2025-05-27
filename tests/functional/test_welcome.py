@@ -1,4 +1,4 @@
-from manager import create_app
+from src.manager import create_app
 
 def test_home_page():
     """
