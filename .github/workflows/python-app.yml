@@ -52,28 +52,3 @@ jobs:
 
     - name: Publish Test Summary Results
       run: npx github-actions-ctrf ctrf-report.json
-
-  release:
-    runs-on: ubuntu-latest
-    needs: [check , test ]
-    steps:
-
-    - uses: actions/checkout@v4
-
-    - name: Build Python Module
-      run: |
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        python -m build
-
-    - name: Get Version
-      run: echo "::set-output name=version::$(python ./bin/version)"
-      id: version
-
-    - name: Release
-      uses: softprops/action-gh-release@v2
-      if: github.ref_type == 'tag'
-      with:
-        make_latest: true
-        files: |
-          dist/manager-${{ steps.version.outputs.version }}.tar.gz
-          LICENSE
