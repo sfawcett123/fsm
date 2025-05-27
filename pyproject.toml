@@ -14,5 +14,5 @@ dependencies = [
 enabled = true
 
 [tool.setuptools.packages.find]
-where = ["manager"]  
+where = ["src"]  
 exclude = [ "bin" ]
