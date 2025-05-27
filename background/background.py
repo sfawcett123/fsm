@@ -30,8 +30,9 @@ class Background():
 
     def inject_load(self):
         """Get some data"""
-        load = []
-        if sys.platform.startswith('linux'):
-            with open('/proc/loadavg', mode='rt' , encoding="utf-8") as f:
-                load = f.read().split()[0:3]
-        return {'load1': load[0], 'load5': load[1], 'load15': load[2]}
+        #load = []
+        #if sys.platform.startswith('linux'):
+        #    with open('/proc/loadavg', mode='rt' , encoding="utf-8") as f:
+        #        load = f.read().split()[0:3]
+        #return {'load1': load[0], 'load5': load[1], 'load15': load[2]}
+        return {'load1': "L1", 'load5': "L5", 'load15': "L15" }
