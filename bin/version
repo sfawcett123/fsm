@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+from pathlib import Path
+import toml
+
+def main():
+   version = "unknown"
+   pyproject_toml_file = Path(__file__).parent.parent / "pyproject.toml"
+   data = toml.load(pyproject_toml_file)
+   print( data["project"]["version"] )
+
+if __name__ == '__main__':
+   main()

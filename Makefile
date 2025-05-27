@@ -6,3 +6,7 @@ build:
 
 clean:
 	rm -rf coverage report.json dist/
+
+change:
+	pip install git-changelog
+        git-changelog > CHANGELOG.md
