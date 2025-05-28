@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block metadata %}
+    <meta property="fsm:page" content="service">
+{% endblock %}
+
+
+{% block content %}
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Service Name</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for service in services %}
+        <tr>
+             <td>{{ service[0] }}</td>
+             <td>{{ service[1] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+   <head>
+        <!-- <title>{{config["APPLICATION_NAME"]}}</title> -->
+        <!-- turbo()  -->
+
+        <title>Flight Simulator Network Manager</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block metadata %} {% endblock %}
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'css/manager.css') }}">
+   </head>
+   <body>
+    <header class="header">
+        <h1>Network Manager</h1>
+        <nav class="navigation">
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/services">SERVICES</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+
+    <footer class="footer">
+        <p>© 2023 Steven Fawcett. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
+</html>
