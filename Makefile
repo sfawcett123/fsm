@@ -9,4 +9,10 @@ clean:
 
 change:
 	pip install git-changelog
-        git-changelog > CHANGELOG.md
+	git-changelog > CHANGELOG.md
+
+dev:
+	flask --app ./src/manager run
+
+routes:
+	flask --app ./src/manager routes
