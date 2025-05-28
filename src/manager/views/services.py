@@ -1,6 +1,6 @@
 """Index Handler"""
 from flask import render_template
-from flask import current_app as app
+# from flask import current_app as app
 from flask.views import View
 import psutil
 
@@ -11,7 +11,9 @@ class Service(View):
         return [(
             psutil.Process(p).name(),
             psutil.Process(p).status(),
-            )  for p in psutil.pids()]
+        ) for p in psutil.pids()]
 
     def dispatch_request(self):
-        return render_template('/service/index.html' , services=self.show_services() )
+        return render_template(
+            '/service/index.html',
+            services=self.show_services())
