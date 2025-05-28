@@ -14,3 +14,5 @@ build/
 *.egg-info/
 report.json
 coverage
+coverage.xml
+ctrf-report.json
