@@ -1,16 +1,23 @@
-from src.manager import create_app
+from bs4 import BeautifulSoup
+from pytest_bdd import ( parsers, given, scenarios, then, when,)
 
-def test_home_page():
-    """
-    GIVEN a Flask application configured for testing
-    WHEN the '/' page is requested (GET)
-    THEN check that the response is valid
-    """
-    # Set the Testing configuration prior to creating the Flask application
-    flask_app = create_app()
+scenarios('features/functional.feature')
 
-    # Create a test client using the Flask application configured for testing
-    with flask_app.test_client() as test_client:
-        response = test_client.get('/')
-        assert response.status_code == 200
-        assert b"Hello, World!" in response.data
+@given('a Flask application configured for testing' , target_fixture="test_client")
+def _( application ):
+    """a Flask application configured for testing."""
+    return application.test_client() 
+
+@when( parsers.parse("the '{page}' page is requested (GET)" ) , target_fixture="soup" )
+def _( test_client , page ):
+    """the '/' page is requested (GET)."""
+    response = test_client.get( page )
+    assert response.status_code == 200
+    return BeautifulSoup(response.data, 'html.parser')
+    
+@then( parsers.parse( 'check that the response returns {result}') )
+def _( soup , result):
+    """check that the response returns index."""
+    title = soup.find("meta", property="fsm:page")
+    assert result in title["content"]
+

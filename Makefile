@@ -1,5 +1,5 @@
 test:
-	python -m pytest --cov --cov-report=json:coverage --ctrf report.json
+	python -m pytest --cov --cov-report=json:coverage --ctrf report.json -vv  --gherkin-terminal-reporter
 
 build:
 	python -m build

@@ -1,3 +1,4 @@
+beautifulsoup4==4.13.4
 blinker==1.9.0
 build==1.2.2.post1
 click==8.2.1
@@ -16,5 +17,7 @@ pytest-cov==6.1.1
 pytest-json-ctrf==0.3.5
 setuptools==80.9.0
 setuptools-git-versioning==2.1.0
+soupsieve==2.7
 toml==0.10.2
+typing_extensions==4.13.2
 Werkzeug==3.1.3

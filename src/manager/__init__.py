@@ -25,7 +25,7 @@ def create_app(test_config=None):
         pass
 
     app.add_url_rule("/", view_func=Index.as_view("index"))
-    app.add_url_rule("/services", view_func=Service.as_view("service"))
+    app.add_url_rule("/processes", view_func=Service.as_view("service"))
 
     return app
 
