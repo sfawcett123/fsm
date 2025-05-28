@@ -1,6 +1,6 @@
 """Index Handler"""
 from flask import render_template
-from flask import current_app as app
+# from flask import current_app as app
 from flask.views import View
 
 
